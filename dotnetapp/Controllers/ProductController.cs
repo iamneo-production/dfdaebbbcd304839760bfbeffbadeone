@@ -21,6 +21,8 @@ namespace dotnetapp.Controllers
       this.productService = _productService;
     }
 
+    [HttpGet]
+    [Route()]
     public IQueryable<Product> GetAll()
     {
         return null;

@@ -18,6 +18,7 @@ namespace dotnetapp.Models
         {
             _dbContext = dbContext;
         }
+        
         public IQueryable<Product> GetProductList()
         {
            return dbContext.Products.AsQuaryble();
