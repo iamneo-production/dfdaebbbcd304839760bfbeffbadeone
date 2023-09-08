@@ -18,26 +18,26 @@ namespace dotnetapp.Models
         {
             _dbContext = dbContext;
         }
-        
+
         public IQueryable<Product> GetProductList()
         {
-           return dbContext.Products.AsQuaryble();
+           return _dbContext.Products.As
         }
 
         public bool AddProduct(Product product)
         {
-            var newProduct =  dbContext.Products.Add(product);
-            dbContext.SaveChanges();
+            var newProduct =  _dbContext.Products.Add(product);
+            _dbContext.SaveChanges();
             return true;
         }
 
         public bool DeleteProduct(int Id)
         {
-            var productToRemove = dbContext.Products.Where(x => x.Id == Id).FirstOrDefault();
+            var productToRemove = _dbContext.Products.Where(x => x.Id == Id).FirstOrDefault();
             if(productToRemove != null)
             {
-                dbContext.Products.Remove(productToRemove);
-                dbContext.SaveChanges();
+                _dbContext.Products.Remove(productToRemove);
+                _dbContext.SaveChanges();
                 return true;
             }
             else
