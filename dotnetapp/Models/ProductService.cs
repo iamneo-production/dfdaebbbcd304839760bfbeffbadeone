@@ -21,7 +21,7 @@ namespace dotnetapp.Models
 
         public IQueryable<Product> GetProductList()
         {
-           return _dbContext.Products.As
+           return _dbContext.Products;        
         }
 
         public bool AddProduct(Product product)
