@@ -25,12 +25,24 @@ namespace dotnetapp.Models
 
         public bool AddProduct(Product product)
         {
-            return dbContext.Products.Add(product);
+            var newProduct =  dbContext.Products.Add(product);
+            dbContext.SaveChanges();
+            return true;
         }
 
         public bool DeleteProduct(int Id)
         {
-            return false;
+            var productToRemove = dbContext.Products.Where(x => x.Id == Id).FirstOrDefault();
+            if(productToRemove != null)
+            {
+                dbContext.Products.Remove(productToRemove);
+                dbContext.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
