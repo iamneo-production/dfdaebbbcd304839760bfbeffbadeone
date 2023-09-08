@@ -22,20 +22,24 @@ namespace dotnetapp.Controllers
     }
 
     [HttpGet]
-    [Route()]
+    [Route("/product/getAll")]
     public IQueryable<Product> GetAll()
     {
-        return null;
+        return _productService.GetProductList();
     }
 
+    [HttpPost]
+    [Route("/product/add")]
     public bool AddProduct(Product newProduct)
     {         
-       return false;            
+       return _productService.AddProduct(newProduct);            
     }   
 
+    [HttpDelete]
+    [Route("/product/delete")]
     public bool DeleteProduct (int id)
     {
-   return false; 
+      return _productService.DeleteProduct(id); 
     }
     }
 }
